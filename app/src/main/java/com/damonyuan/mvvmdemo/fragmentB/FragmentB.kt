@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.damonyuan.mvvmdemo.ICustomerName
 import com.damonyuan.mvvmdemo.R
 import com.damonyuan.mvvmdemo.rxbus.RxBus
-import com.damonyuan.mvvmdemo.fragmentA.AViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

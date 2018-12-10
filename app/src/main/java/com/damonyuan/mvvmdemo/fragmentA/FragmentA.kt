@@ -1,4 +1,4 @@
-package com.damonyuan.mvvmdemo.fragmenta
+package com.damonyuan.mvvmdemo.fragmentA
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.damonyuan.mvvmdemo.ICustomerName
-import com.damonyuan.mvvmdemo.fragmentB.BViewModel
 import com.damonyuan.mvvmdemo.R
-import com.damonyuan.mvvmdemo.fragmentA.AViewModel
 import com.damonyuan.mvvmdemo.rxbus.RxBus
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_a.*
@@ -37,7 +35,7 @@ class FragmentA: Fragment() {
                 if (it is ICustomerName) {
                     val customerName = it as ICustomerName
                     if (customerName.getCustomerName() != vm.getCustomerName()) {
-                        this.edit_text_b.setText(customerName.getCustomerName())
+                        this.edit_text_a.setText(customerName.getCustomerName())
                     }
                 }
             }

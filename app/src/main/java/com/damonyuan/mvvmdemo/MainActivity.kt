@@ -3,7 +3,7 @@ package com.damonyuan.mvvmdemo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.damonyuan.mvvmdemo.fragmentB.FragmentB
-import com.damonyuan.mvvmdemo.fragmenta.FragmentA
+import com.damonyuan.mvvmdemo.fragmentA.FragmentA
 import kotlinx.android.synthetic.main.activity_main.*
 
 interface ICustomerName {
