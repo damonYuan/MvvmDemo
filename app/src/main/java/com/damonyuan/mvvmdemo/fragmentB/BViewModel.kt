@@ -2,10 +2,11 @@ package com.damonyuan.mvvmdemo.fragmentB
 
 import android.text.Editable
 import android.text.TextWatcher
+import com.damonyuan.mvvmdemo.ICustomerName
 import com.damonyuan.mvvmdemo.rxbus.RxBus
 import com.damonyuan.mvvmdemo.rxbus.RxEvent
 
-class BViewModel: TextWatcher, RxEvent {
+class BViewModel: TextWatcher, RxEvent, ICustomerName {
     override val name: String
         get() = BViewModel::class.java.name
 
@@ -23,7 +24,7 @@ class BViewModel: TextWatcher, RxEvent {
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
-    fun getCustomerName(): String {
+    override fun getCustomerName(): String {
         return mCustomerName
     }
 

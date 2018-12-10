@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.damonyuan.mvvmdemo.ICustomerName
 import com.damonyuan.mvvmdemo.fragmentB.BViewModel
 import com.damonyuan.mvvmdemo.R
+import com.damonyuan.mvvmdemo.fragmentA.AViewModel
 import com.damonyuan.mvvmdemo.rxbus.RxBus
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_a.*
@@ -27,42 +29,15 @@ class FragmentA: Fragment() {
         this.edit_text_a.setText(vm.getCustomerName())
         this.edit_text_a.addTextChangedListener(vm)
 
-        /**
-         * Synchronous solution
-         */
-//        compositeDisposable.add(
-//            RxBus.toObservable()
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe {
-//                if (it.name == BViewModel::class.java.name) {
-//                    val bViewModel = it as BViewModel
-//                    if (bViewModel.getCustomerName() != vm.getCustomerName()) {
-//                        // Synchronous solution
-//                        vm.setCustomerName(bViewModel.getCustomerName())
-//                        this.edit_text_a.setText(vm.getCustomerName())
-//                    }
-//                }
-//            }
-//        )
-
-        /**
-         * Asynchronous solution
-         */
         compositeDisposable.add(
             RxBus.toObservable()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                if (it.name == BViewModel::class.java.name) {
-                    val bViewModel = it as BViewModel
-                    if (bViewModel.getCustomerName() != vm.getCustomerName()) {
-                        // Synchronous solution
-                        vm.setCustomerName(bViewModel.getCustomerName())
-                    }
-                } else if (it.name == AViewModel::class.java.name) {
-                    if (this.edit_text_a.text.toString() != vm.getCustomerName()) {
-                        this.edit_text_a.setText(vm.getCustomerName())
+                if (it is ICustomerName) {
+                    val customerName = it as ICustomerName
+                    if (customerName.getCustomerName() != vm.getCustomerName()) {
+                        this.edit_text_b.setText(customerName.getCustomerName())
                     }
                 }
             }

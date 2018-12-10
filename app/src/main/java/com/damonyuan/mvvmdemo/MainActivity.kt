@@ -6,6 +6,10 @@ import com.damonyuan.mvvmdemo.fragmentB.FragmentB
 import com.damonyuan.mvvmdemo.fragmenta.FragmentA
 import kotlinx.android.synthetic.main.activity_main.*
 
+interface ICustomerName {
+    fun getCustomerName(): String
+}
+
 class MainActivity : AppCompatActivity() {
 
     private val vm = ActivityViewModel()

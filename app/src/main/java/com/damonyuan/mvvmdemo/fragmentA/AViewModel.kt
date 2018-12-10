@@ -1,11 +1,12 @@
-package com.damonyuan.mvvmdemo.fragmenta
+package com.damonyuan.mvvmdemo.fragmentA
 
 import android.text.Editable
 import android.text.TextWatcher
+import com.damonyuan.mvvmdemo.ICustomerName
 import com.damonyuan.mvvmdemo.rxbus.RxBus
 import com.damonyuan.mvvmdemo.rxbus.RxEvent
 
-class AViewModel: TextWatcher, RxEvent {
+class AViewModel: TextWatcher, RxEvent, ICustomerName {
     override val name: String
         get() = AViewModel::class.java.name
 
@@ -23,7 +24,7 @@ class AViewModel: TextWatcher, RxEvent {
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
-    fun getCustomerName(): String {
+    override fun getCustomerName(): String {
         return mCustomerName
     }
 
